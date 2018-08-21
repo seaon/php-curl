@@ -1,6 +1,5 @@
 <?php
-
-include './Curl.php';
+include './src/Curl.php';
 
 $ch = new \Sio\Curl();
 
@@ -11,7 +10,10 @@ $UA = [
     'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.114 Safari/537.36 Vivaldi/1.9.818.50',
 ];
 
-$result = $ch->get($data);
+$result = $ch->url('http://tp3.com/')
+    ->header(['Content-Type: application/json'])
+    ->data(['a'=>123])
+    ->post();
 
-var_dump($result);
+var_dump($result['data']);
 exit();
